@@ -12,6 +12,8 @@ class ViewControllerBuscar: UIViewController,UITableViewDelegate,UITableViewData
    
     
 var peliculas = [Peliculas]()
+var users = [Users]()
+
     @IBOutlet weak var txtBuscar: UITextField!
     
     @IBOutlet weak var tablaPeliculas: UITableView!
@@ -20,6 +22,10 @@ var peliculas = [Peliculas]()
         dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBAction func btnenvtoeditar(_ sender: Any) {
+        performSegue(withIdentifier: "segueEditar_Perfil", sender: nil)
+    }
     
     @IBAction func btnBuscar(_ sender: Any) {
         let ruta = "http://localhost:3000/peliculas?"
@@ -87,6 +93,9 @@ var peliculas = [Peliculas]()
         super.viewDidLoad()
         tablaPeliculas.delegate = self
         tablaPeliculas.dataSource = self
+        for data in self.users{
+            print("id:\(data.id),nombre:\(data.nombre),nombre\(data.email)")
+        }
         
         let ruta = "http://localhost:3000/peliculas/"
         cargarPeliculas(ruta: ruta){
@@ -109,6 +118,41 @@ var peliculas = [Peliculas]()
             
         }
     }
+    func metodoDelete(ruta:String){
+        let url : URL = URL(string: ruta)!
+        var request = URLRequest(url : url)
+        let session = URLSession.shared
+        request.httpMethod = "DELETE"
+       
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let task = session.dataTask(with: request, completionHandler:{(data,response,error) in
+            if (data != nil)
+            {
+                do{
+                    let dict = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
+                }
+                catch{
+                    
+                }
+            }
+        })
+        task.resume()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let pelicula = peliculas[indexPath.row]
+            let ruta = "http://localhost:3000/peliculas/\(pelicula.id)"
+            
+            metodoDelete(ruta: ruta)
+            peliculas.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
+   
+
 //
 //    func cargarPeliculas(ruta:String, completed: @escaping () -> ()){
 //        URLSession.shared.dataTask(with: url!) { (data, response,
@@ -131,6 +175,10 @@ var peliculas = [Peliculas]()
         if segue.identifier == "segueEditar"{
             let siguienteVC = segue.destination as! ViewControllerAgregalo
             siguienteVC.pelicula = sender as? Peliculas
+        }
+        if segue.identifier == "segueEditar_Perfil"{
+            let siguienteVC = segue.destination as! Editar_PerfilViewController
+            siguienteVC.users = users
         }
         
         // Get the new view controller using segue.destination.

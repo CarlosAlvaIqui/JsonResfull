@@ -170,21 +170,124 @@
                                 <action selector="btnSalir:" destination="8ya-Ma-Xdu" id="iIv-Vk-75X"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="L58-Lf-gg4">
-                            <connections>
-                                <segue destination="6ql-is-EJq" kind="show" identifier="segueAgregar" id="K0t-Qv-Ojf"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="L58-Lf-gg4">
+                                <connections>
+                                    <segue destination="6ql-is-EJq" kind="show" identifier="segueAgregar" id="K0t-Qv-Ojf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Editar Perfil" id="9gs-Je-ADm">
+                                <connections>
+                                    <action selector="btnenvtoeditar:" destination="8ya-Ma-Xdu" id="F9Z-zn-ch3"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tablaPeliculas" destination="qCh-oH-LAf" id="lD9-6n-n3P"/>
                         <outlet property="txtBuscar" destination="sdy-OH-1SD" id="zbI-q7-6Y0"/>
                         <segue destination="6ql-is-EJq" kind="show" identifier="segueEditar" id="qOb-O5-z7c"/>
+                        <segue destination="8pT-6L-u1e" kind="presentation" identifier="segueEditar_Perfil" id="lA7-aD-Od0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPi-1R-7AO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773.5999999999999" y="125.4872563718141"/>
+            <point key="canvasLocation" x="1833" y="125"/>
+        </scene>
+        <!--Editar Perfil View Controller-->
+        <scene sceneID="75k-uA-fr9">
+            <objects>
+                <viewController id="8pT-6L-u1e" customClass="Editar_PerfilViewController" customModule="JSONRESTful" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cdb-Hh-ZqN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editar Perfil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxU-vQ-Mgz">
+                                <rect key="frame" x="143" y="85" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLc-d7-4EG">
+                                <rect key="frame" x="156.5" y="156" width="62" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViZ-kc-8bj">
+                                <rect key="frame" x="166" y="297" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w08-5p-jPv">
+                                <rect key="frame" x="167" y="441" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myA-DP-amD">
+                                <rect key="frame" x="159.5" y="567" width="56" height="30"/>
+                                <state key="normal" title="Guardar"/>
+                                <connections>
+                                    <action selector="btnEditarPerfil:" destination="8pT-6L-u1e" eventType="touchUpInside" id="NdS-UZ-bZ0"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escriba su nuevo nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wsz-EA-mF4">
+                                <rect key="frame" x="40" y="217" width="295" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escriba su nueva clave" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9W9-nZ-cqr">
+                                <rect key="frame" x="40" y="361" width="295" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escriba su nuevo email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbm-jl-9rU">
+                                <rect key="frame" x="40" y="497" width="295" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1bb-V4-1Fc" firstAttribute="trailing" secondItem="9W9-nZ-cqr" secondAttribute="trailing" constant="40" id="1fX-Yu-d0E"/>
+                            <constraint firstItem="ViZ-kc-8bj" firstAttribute="centerX" secondItem="cdb-Hh-ZqN" secondAttribute="centerX" id="2GR-MG-fd4"/>
+                            <constraint firstItem="LLc-d7-4EG" firstAttribute="centerX" secondItem="cdb-Hh-ZqN" secondAttribute="centerX" id="3BB-hB-5RS"/>
+                            <constraint firstItem="cbm-jl-9rU" firstAttribute="top" secondItem="w08-5p-jPv" secondAttribute="bottom" constant="35" id="5Af-wX-jCX"/>
+                            <constraint firstItem="9W9-nZ-cqr" firstAttribute="centerX" secondItem="cdb-Hh-ZqN" secondAttribute="centerX" id="5Ej-Gb-Ko8"/>
+                            <constraint firstItem="9W9-nZ-cqr" firstAttribute="leading" secondItem="1bb-V4-1Fc" secondAttribute="leading" constant="40" id="7E1-qV-mXQ"/>
+                            <constraint firstItem="9W9-nZ-cqr" firstAttribute="top" secondItem="ViZ-kc-8bj" secondAttribute="bottom" constant="43" id="8Pw-Fz-9i9"/>
+                            <constraint firstItem="wsz-EA-mF4" firstAttribute="leading" secondItem="1bb-V4-1Fc" secondAttribute="leading" constant="40" id="ALF-Pl-XMQ"/>
+                            <constraint firstItem="wsz-EA-mF4" firstAttribute="top" secondItem="LLc-d7-4EG" secondAttribute="bottom" constant="40" id="AYl-S5-H4V"/>
+                            <constraint firstItem="w08-5p-jPv" firstAttribute="centerX" secondItem="cdb-Hh-ZqN" secondAttribute="centerX" id="Afg-sC-XgM"/>
+                            <constraint firstItem="DxU-vQ-Mgz" firstAttribute="top" secondItem="1bb-V4-1Fc" secondAttribute="top" constant="65" id="Gq8-h8-pvp"/>
+                            <constraint firstItem="wsz-EA-mF4" firstAttribute="centerX" secondItem="cdb-Hh-ZqN" secondAttribute="centerX" id="OYP-rS-C7L"/>
+                            <constraint firstItem="myA-DP-amD" firstAttribute="top" secondItem="cbm-jl-9rU" secondAttribute="bottom" constant="40" id="Rxd-pe-Fs0"/>
+                            <constraint firstItem="1bb-V4-1Fc" firstAttribute="trailing" secondItem="wsz-EA-mF4" secondAttribute="trailing" constant="40" id="bkv-3C-Rc5"/>
+                            <constraint firstItem="cbm-jl-9rU" firstAttribute="leading" secondItem="1bb-V4-1Fc" secondAttribute="leading" constant="40" id="cj7-wR-qOf"/>
+                            <constraint firstItem="cbm-jl-9rU" firstAttribute="centerX" secondItem="cdb-Hh-ZqN" secondAttribute="centerX" id="fLu-2b-d3M"/>
+                            <constraint firstItem="w08-5p-jPv" firstAttribute="top" secondItem="9W9-nZ-cqr" secondAttribute="bottom" constant="50" id="hor-aq-r5N"/>
+                            <constraint firstItem="myA-DP-amD" firstAttribute="centerX" secondItem="cdb-Hh-ZqN" secondAttribute="centerX" id="jPu-y8-0k2"/>
+                            <constraint firstItem="DxU-vQ-Mgz" firstAttribute="centerX" secondItem="cdb-Hh-ZqN" secondAttribute="centerX" id="m0J-tK-6xt"/>
+                            <constraint firstItem="LLc-d7-4EG" firstAttribute="top" secondItem="DxU-vQ-Mgz" secondAttribute="bottom" constant="50" id="mOI-Oa-AWN"/>
+                            <constraint firstItem="1bb-V4-1Fc" firstAttribute="trailing" secondItem="cbm-jl-9rU" secondAttribute="trailing" constant="40" id="moB-Rx-Pcb"/>
+                            <constraint firstItem="ViZ-kc-8bj" firstAttribute="top" secondItem="wsz-EA-mF4" secondAttribute="bottom" constant="50" id="tAO-p1-8hv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1bb-V4-1Fc"/>
+                    </view>
+                    <connections>
+                        <outlet property="txtClave" destination="9W9-nZ-cqr" id="Vce-Up-47g"/>
+                        <outlet property="txtEmail" destination="cbm-jl-9rU" id="yuQ-eW-gvd"/>
+                        <outlet property="txtNombre" destination="wsz-EA-mF4" id="ykd-v4-0LJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ksf-yZ-onK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1833" y="832"/>
         </scene>
         <!--View Controller Agregalo-->
         <scene sceneID="LUu-ap-3LB">
@@ -318,6 +421,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qOb-O5-z7c"/>
+        <segue reference="K0t-Qv-Ojf"/>
     </inferredMetricsTieBreakers>
 </document>

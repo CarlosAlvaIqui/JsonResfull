@@ -56,7 +56,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            let siguienteVC = segue.destination as! Editar_PerfilViewController
+//            siguienteVC.usuario = sender as? Users
+        
+//        if let nav = segue.destination as? UINavigationController,
+//            let vc = nav.topViewController as? Editar_PerfilViewController {
+//            vc.username = "Test"
+//        }
+        if let nav = segue.destination as? UINavigationController,
+            let siguienteVC = nav.topViewController as? ViewControllerBuscar {
+            siguienteVC.users = users
+        }
 
-
+    }
+    
 }
 

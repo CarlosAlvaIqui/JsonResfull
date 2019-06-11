@@ -10,6 +10,7 @@ import UIKit
 
 class ViewControllerAgregalo: UIViewController {
     var pelicula:Peliculas?
+    var usuario = [Users]()
     @IBOutlet weak var txtNombre: UITextField!
     @IBOutlet weak var txtGenero: UITextField!
     @IBOutlet weak var txtDuracion: UITextField!
